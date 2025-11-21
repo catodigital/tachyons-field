@@ -12349,11 +12349,29 @@ ul.li6 {
   scrollbar-gutter: auto;
 }
 
-@media (min-width: 62rem) {
-  .vp1-l, .vp2-l, .vp3-l {
-    scrollbar-gutter: stable both-edges;
-    margin-left: auto;
-    margin-right: auto;
+.vp, .vp4-xl, .vp3-xl, .vp2-xl, .vp1-xl, .vp4-l, .vp3-l, .vp2-l, .vp1-l, .vp4-m, .vp3-m, .vp2-m, .vp1-m {
+  scrollbar-gutter: stable both-edges;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 48rem) {
+  .vp1-m {
+    max-width: 47.5rem;
+  }
+  .vp2-m {
+    max-width: 47rem;
+  }
+  .vp3-m {
+    max-width: 46rem;
+  }
+  .vp4-m {
+    max-width: 44rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .vp1-l {
+    max-width: 61.5rem;
   }
   .vp2-l {
     max-width: 61rem;
@@ -12363,6 +12381,20 @@ ul.li6 {
   }
   .vp4-l {
     max-width: 58rem;
+  }
+}
+@media screen and (min-width: 72rem) {
+  .vp1-xl {
+    max-width: 71.5rem;
+  }
+  .vp2-xl {
+    max-width: 71rem;
+  }
+  .vp3-xl {
+    max-width: 70rem;
+  }
+  .vp4-xl {
+    max-width: 68rem;
   }
 }
 /*

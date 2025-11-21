@@ -58,11 +58,13 @@ $spans: ("a": "", "v": "vert", "h": "horiz");
 
 $breakpoint-small: 30rem;
 $breakpoint-medium: 48rem;
-$breakpoint-large: 62rem; // +2 because of the max view page vp-* settings reducing by 2
+$breakpoint-large: 62rem;
+$breakpoint-xl: 72rem; // really only for max view page
 
 $media-breakpoint-small: "screen and (min-width: #{$breakpoint-small})";
 $media-breakpoint-medium: "screen and (min-width: #{$breakpoint-medium})";
 $media-breakpoint-large: "screen and (min-width: #{$breakpoint-large})";
+$media-breakpoint-xl: "screen and (min-width: #{$breakpoint-xl})";
 
 $size_opts: ("", "-s", "-m", "-l");
 $size_map: ("": "", "-s": $media-breakpoint-small, "-m": $media-breakpoint-medium, "-l": $media-breakpoint-large);
