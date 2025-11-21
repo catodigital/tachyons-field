@@ -56,10 +56,10 @@ $sizes: (0, .25, .5, 1, 2, 3, 5, 8, 13, 21, 34);
 $sides: ("l": "-left", "r": "-right", "b": "-bottom", "t": "-top");
 $spans: ("a": "", "v": "vert", "h": "horiz");
 
-$breakpoint-small: 30rem;
-$breakpoint-medium: 48rem;
-$breakpoint-large: 62rem;
-$breakpoint-xl: 72rem; // really only for max view page
+$breakpoint-small: 30rem;  // mobile: 480 width
+$breakpoint-medium: 48rem; // tablet: 768 width (close to 720 wide)
+$breakpoint-large: 66rem;  // laptop: close to 1080 wide
+$breakpoint-xl: 84rem;     // desktop: close to 1440 wide
 
 $media-breakpoint-small: "screen and (min-width: #{$breakpoint-small})";
 $media-breakpoint-medium: "screen and (min-width: #{$breakpoint-medium})";
@@ -67,10 +67,10 @@ $media-breakpoint-large: "screen and (min-width: #{$breakpoint-large})";
 $media-breakpoint-xl: "screen and (min-width: #{$breakpoint-xl})";
 
 $size_opts: ("", "-s", "-m", "-l");
-$size_map: ("": "", "-s": $media-breakpoint-small, "-m": $media-breakpoint-medium, "-l": $media-breakpoint-large);
+$size_map: ("": "", "-s": $media-breakpoint-small, "-m": $media-breakpoint-medium, "-l": $media-breakpoint-large, "-xl": $media-breakpoint-xl);
 
 @mixin map-sizes {
-  $size_map: ("": "", "-s": $media-breakpoint-small, "-m": $media-breakpoint-medium, "-l": $media-breakpoint-large);
+  $size_map: ("": "", "-s": $media-breakpoint-small, "-m": $media-breakpoint-medium, "-l": $media-breakpoint-large, "-xl": $media-breakpoint-xl);
   @each $ext, $break in ($size_map) {
     @if $ext == "" {
       @content($ext);
