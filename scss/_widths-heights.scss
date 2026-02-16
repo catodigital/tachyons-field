@@ -50,6 +50,7 @@
     .#{$letter}min-none#{$ext} { min-#{$direction}: none; }
     .#{$letter}max-none#{$ext} { max-#{$direction}: none; }
     .#{$letter}max-content#{$ext} { #{$direction}: max-content; }
+    .#{$letter}-fit#{$ext} { #{$direction}: fit-content; }
   }
 }
 
