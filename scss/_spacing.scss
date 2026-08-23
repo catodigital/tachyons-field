@@ -25,6 +25,12 @@
         .#{$type}#{$letter}#{$x}#{$ext} {
           @include directions($prefix, $side, $size);
         }
+        // negative margins
+        @if $type == "m" and $x > 0 {
+          .m#{$letter}#{$x}n#{$ext} {
+            @include directions($prefix, $side, -$size);
+          }
+        }
       }
       .#{$type}#{$letter}-auto#{$ext} {
         @include directions($prefix, $side, auto);
@@ -56,4 +62,58 @@
 
 @media #{$media-breakpoint-large} {
   @include expand-sizes("-l");
+}
+
+.sgs { scrollbar-gutter: stable }
+.sga { scrollbar-gutter: auto }
+
+// VIEW PAGE ~ maxing width for a viewable page that is then centered
+//
+// Comes with sizes that pair up with ph/mh 1,2,3 —these should be used in
+// combination, such as: ph3 vp3-l; or ph2 vp2-l. this helps avoid the
+// shrinking valley between the beginning of a breakpoint and the
+// addition/removal of other elements like padding and margins.
+
+// @media (min-width: $breakpoint-large) {
+//   .vp1-l, .vp2-l, .vp3-l {
+//     // The scrollbar is 1rem which is being counted in the overall width even
+//     // though it is uncontrollable. This scrollbar-gutter setting SHOULD remove
+//     // it from calculations, but it is not... c`est-la-vie
+//     scrollbar-gutter: stable both-edges;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+//   @for $x from 2 through 4 {
+//     $maxwidth-gutter: list.nth($sizes, $x+1) * 2rem;
+//     .vp#{$x}-l {
+//       max-width: $breakpoint-large - $maxwidth-gutter;
+//     }
+//   }
+// }
+
+$mvp-size-map: ("-m": $breakpoint-medium, "-l": $breakpoint-large, "-xl": $breakpoint-xl);
+$valleys: (1,2,3,4);
+
+// The scrollbar is 1rem which is being counted in the overall width even
+// though it is uncontrollable. This scrollbar-gutter setting SHOULD remove
+// it from calculations, but it is not... c`est-la-vie
+.vp {
+  scrollbar-gutter: stable both-edges;
+  margin-left: auto;
+  margin-right: auto;
+}
+@each $ext, $break in ($mvp-size-map) {
+  @each $valley in ($valleys) {
+    .vp#{$valley}#{$ext} { @extend .vp; }
+  }
+}
+
+@each $ext, $break in ($mvp-size-map) {
+  @media screen and (min-width: $break) {
+    @each $valley in ($valleys) {
+      .vp#{$valley}#{$ext} {
+        max-width: $break - (list.nth($sizes, $valley+1) * 2rem);
+      }
+    }
+  }
 }
