@@ -10,11 +10,20 @@
      -l = large
 
 */
-
 @mixin letter-spacing($ext) {
-.ls#{$ext}       { letter-spacing:  .1em; }
-.ls-tight#{$ext} { letter-spacing: -.05em; }
-.ls-wide#{$ext}  { letter-spacing:  .25em; }
+  $spacings: (
+    0: -.05em,
+    1:  .05em,
+    2:  .1em,
+    3:  .15em,
+    4:  .2em
+  );
+
+  @each $i, $spacing in $spacings {
+    .ls#{$i}#{$ext} {
+      letter-spacing: $spacing;
+    }
+  }
 }
 
 @include map-sizes using ($ext) {
